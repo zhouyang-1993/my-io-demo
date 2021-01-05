@@ -3,6 +3,8 @@ package my.io.demo.nio;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
@@ -15,14 +17,23 @@ public class NioServer {
         start();
     }
 
+
+    private static Selector selector;
     /**
      *  channel, buffer, selector
      */
     public static void start(){
         try {
+
+            selector = Selector.open();
+
             ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
             serverSocketChannel.configureBlocking(false);
             serverSocketChannel.socket().bind(new InetSocketAddress(8080));
+
+            serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+
+
 
             while(true){
 

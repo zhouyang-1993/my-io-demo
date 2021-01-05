@@ -7,7 +7,7 @@ import java.net.Socket;
 /**
  * @author zhouyang
  */
-public class ServerClient {
+public class BioServer {
 
     public static void main(String[] args) {
         severStart();

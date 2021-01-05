@@ -6,7 +6,7 @@ import java.net.Socket;
 /**
  * @author zhouyang
  */
-public class Client {
+public class BioClient {
 
     public static void main(String[] args) {
         clientDemo();
